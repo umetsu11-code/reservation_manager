@@ -59,3 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.0.0'
+
+gem 'devise'
