@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rooms</h1>
+<h1>施設一覧</h1>
+<% link_to '新しい施設を追加', new_room_path %>
 
 <table>
   <thead>
@@ -19,6 +20,10 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= room.name %></td>
+         <li>
+         <%= link_to room.name, room_path(room) %>
+         <p><%= number_to_currency(room.price) %></p>
+         </li>
         <td><%= room.description %></td>
         <td><%= room.price %></td>
         <td><%= room.address %></td>
