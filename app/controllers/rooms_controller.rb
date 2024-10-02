@@ -3,7 +3,11 @@ class RoomsController < ApplicationController
 
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    if params[:query].present?
+      @rooms =Room.where('name LIKE ? OP address LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @rooms = Room.all
+    end
   end
 
   # GET /rooms/1 or /rooms/1.json

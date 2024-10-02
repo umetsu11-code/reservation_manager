@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name(施設名称):</strong>
   <%= @room.name %>
 </p>
 
@@ -11,24 +11,24 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Price(料金):</strong>
   <%= @room.price %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Address(住所):</strong>
   <%= @room.address %>
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>Image(詳細画像):</strong>
   <%= @room.image %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>User(ユーザー):</strong>
   <%= @room.user_id %>
 </p>
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<%= link_to '施設一覧に戻る', rooms_path %>

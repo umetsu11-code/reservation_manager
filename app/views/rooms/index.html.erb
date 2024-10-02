@@ -1,7 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>施設一覧</h1>
-<% link_to '新しい施設を追加', new_room_path %>
+<%= link_to '新しい施設を追加', new_room_path %>
+
+<%# 施設検索機能%>
+<%= form_with url: rooms_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :query, "施設検索" %>
+    <%= form.text_field :query %>
+    <%= form.submit "検索" %>
+  </div>
+<% end %>
+
 
 <table>
   <thead>
@@ -19,15 +29,11 @@
   <tbody>
     <% @rooms.each do |room| %>
       <tr>
-        <td><%= room.name %></td>
-         <li>
-         <%= link_to room.name, room_path(room) %>
-         <p><%= number_to_currency(room.price) %></p>
-         </li>
+        <td><%= link_to room.name, room_path(room) %></td>
         <td><%= room.description %></td>
-        <td><%= room.price %></td>
+        <td><%= number_to_currency(room.price) %></td>
         <td><%= room.address %></td>
-        <td><%= room.image %></td>
+        <td><%= image_tag room.image if room.image.present? %></td>
         <td><%= room.user_id %></td>
         <td><%= link_to 'Show', room %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
@@ -38,5 +44,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Room', new_room_path %>
