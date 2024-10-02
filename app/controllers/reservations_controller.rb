@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
+    @room = Room.find(params[room_id])
     @reservation = Reservation.new
   end
 
@@ -21,11 +22,13 @@ class ReservationsController < ApplicationController
 
   # POST /reservations or /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+    @room = Room.find(params[:room_id])
+    @reservation = @room.reservations.new(reservation_params)
+    @reservation.user = current_user
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." }
+        format.html { redirect_to room_path(@room), notice: '予約が完了しました' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -33,6 +36,13 @@ class ReservationsController < ApplicationController
       end
     end
   end
+
+  private
+
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date)
+  end
+end
 
   # PATCH/PUT /reservations/1 or /reservations/1.json
   def update

@@ -1,10 +1,10 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show edit update destroy ]
+  before_action :set_room, only: %i[show edit update destroy]
 
   # GET /rooms or /rooms.json
   def index
     if params[:query].present?
-      @rooms =Room.where('name LIKE ? OP address LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+      @rooms = Room.where('name LIKE ? OR address LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
     else
       @rooms = Room.all
     end
@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @reservation = Reservation.new # ここで予約オブジェクトも新規作成
   end
 
   # GET /rooms/1/edit
@@ -54,7 +55,6 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1 or /rooms/1.json
   def destroy
     @room.destroy
-
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
       format.json { head :no_content }
@@ -62,13 +62,14 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.require(:room).permit(:name, :description, :price, :address, :image, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.require(:room).permit(:name, :description, :price, :address, :image, :user_id)
+  end
 end
