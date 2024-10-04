@@ -1,26 +1,36 @@
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to "Settings", edit_user_registration_path %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% end %>
+<head>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<head>宿泊予約サイト</head>
+</head>
 
 <body>
  <header>
   <h1>Potepan Share</h1>
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <li class="nav-item NavItem">Logged in as <%= current_user.email %></li>
+        <li class="nav-item NavItem"><%= link_to 'Settings', edit_user_registration_path %></li>
+        <li class="nav-item NavItem"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li class="nav-item NavItem"><%= link_to 'ログイン', new_user_session_path %></li>
+        <li class="nav-item NavItem"><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </nav>
  </header>
-  <div class="FirstView" >
+
+  <div class="FirstView">
    <section class="container">
     <h2 class="FirstView__title">
-      "potepanshareで"<br>
-      "最高の旅行体験を"
+      potepanshareで<br>
+      最高の旅行体験を
     </h2>
     <div class="FirstViewSearch">
-    <p>ここに検索フォームを配置する<p/>
+      <p>ここに検索フォームを配置する</p>
     </div>
    </section>
   </div>
+
  <footer>Potepan Share</footer>
 </body>
-
