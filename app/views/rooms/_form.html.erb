@@ -41,6 +41,12 @@
     <%= form.text_field :user_id %>
   </div>
 
+  <div class="field">
+   <%= form.label :region, '地域' %>
+    <%= form.select :region, Room::REGIONS, prompt: '地域を選択してください' %>
+</div>
+  
+
   <div class="actions">
     <%= form.submit %>
   </div>

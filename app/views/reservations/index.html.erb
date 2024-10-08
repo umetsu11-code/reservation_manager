@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reservations</h1>
+<h1>予約済み一覧</h1>
 
 <table>
   <thead>
@@ -22,9 +22,9 @@
         <td><%= reservation.guests %></td>
         <td><%= reservation.user_id %></td>
         <td><%= reservation.room_id %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', reservation %></td>
+        <td><%= link_to '編集', edit_reservation_path(reservation) %></td>
+        <td><%= link_to '削除', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

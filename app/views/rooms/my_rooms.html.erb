@@ -1,0 +1,6 @@
+<h1>登録済み宿泊所</h1>
+<ul>
+  <% @rooms.each do |room| %>
+    <li><%= room.name %> - <%= room.address %></li>
+  <% end %>
+</ul>

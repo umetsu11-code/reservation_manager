@@ -16,12 +16,11 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>名称</th>
       <th>Description</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Image</th>
-      <th>User</th>
+      <th>価格</th>
+      <th>住所</th>
+      <th>地域</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,14 +29,17 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= link_to room.name, room_path(room) %></td>
+        <p>地域: <%= room.region %></p>
+        <p>住所: <%= room.address %></p>
+        <p>価格: <%= number_to_currency(room.price) %></p>
         <td><%= room.description %></td>
         <td><%= number_to_currency(room.price) %></td>
         <td><%= room.address %></td>
         <td><%= image_tag room.image if room.image.present? %></td>
         <td><%= room.user_id %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '一覧', room %></td>
+        <td><%= link_to '詳細', edit_room_path(room) %></td>
+        <td><%= link_to '削除', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
