@@ -1,43 +1,42 @@
 <head>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
- <header>
-  <h1>Potepan Share</h1>
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li class="nav-item NavItem">Logged in as <%= current_user.email %></li>
-        <li class="nav-item NavItem"><%= link_to 'Settings', edit_user_registration_path %></li>
-        <li class="nav-item NavItem"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li class="nav-item NavItem"><%= link_to 'ログイン', new_user_session_path %></li>
-        <li class="nav-item NavItem"><%= link_to '新規登録', new_user_registration_path %></li>
-      <% end %>
-    </ul>
-  </nav>
- </header>
+  <header>
+    <h1>Potepan Share</h1>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li class="nav-item NavItem">Logged in as <%= current_user.email %></li>
+          <li class="nav-item NavItem"><%= link_to 'Settings', edit_user_registration_path %></li>
+          <li class="nav-item NavItem"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-item NavItem"><%= link_to 'ログイン', new_user_session_path %></li>
+          <li class="nav-item NavItem"><%= link_to '新規登録', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
 
   <div class="FirstView">
-   <section class="container">
-    <h2 class="FirstView__title">
-      potepanshareで<br>
-      最高の旅行体験を
-    </h2>
-    <div class="FirstViewSearch">
-    <%# 検索機能 %>
-    <%= form_with url: rooms_path, method: :get, local: true do |form| %>
-      <div>
-        <%= form.label :query, "施設検索" %>
-        <%= form.text_field :query %>
-        <%= form.submit "検索" %>
+    <section class="container">
+      <h2 class="FirstView__title">
+        potepanshareで<br>
+        まだ体験したことのない旅をしよう
+      </h2>
+      <div class="FirstViewSearch">
+        <%# 検索機能 %>
+        <%= form_with url: rooms_path, method: :get, local: true, data: { turbo_frame: "_self" } do |form| %>
+          <div>
+            <%= form.label :query, "施設検索" %>
+            <%= form.text_field :query %>
+            <%= form.submit "検索" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    </div>
-   </section>
+    </section>
   </div>
 
- <footer>Potepan Share</footer>
+  <footer>Potepan Share</footer>
 </body>

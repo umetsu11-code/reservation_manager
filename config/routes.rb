@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index, :new, :create, :show]
   
   resources :rooms
-  resources :rooms do
-    resources :reservations, only: [:new, :create, :index]
-  end
+  #resources :rooms do
+    #resources :reservations, only: [:new, :create, :index]
+  #end
 
   resources :facilities
 
