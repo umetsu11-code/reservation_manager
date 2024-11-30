@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    root_path # ホーム画面（トップページ）にリダイレクト
+    new_user_session_path # ホーム画面（トップページ）にリダイレクト
   end
-  
+
 end
