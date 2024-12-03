@@ -1,5 +1,15 @@
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトを実行しますか?" } %>
 <body>
-<h1>ポテパンシェア(home page)</h1>
 <p>今まで見たこのない旅をしよう</p>
+
+<h1>施設検索</h1>
+
+<!-- 検索フォーム -->
+<div>
+  <input type="text" id="search-query" placeholder="施設名を入力" class="form-control" />
+  <button id="search-button" class="btn btn-primary mt-2">検索</button>
+</div>
+<!-- 結果表示エリア 検索結果を表示させる際に画面遷移を伴うようにしたい のち修正-->
+</div>
+
 </body>
+<footer></footer>
