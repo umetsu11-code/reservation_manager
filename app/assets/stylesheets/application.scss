@@ -15,3 +15,21 @@
  以下にbootstarapをインストールするための文言を追記
  */
  @import "bootstrap/scss/bootstrap";
+ 
+/*footerのCSSを編集*/
+ body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 画面全体の高さ */
+  }
+  
+  main {
+    flex-grow: 1; /* メインコンテンツを伸縮可能に */
+  }
+  
+  footer {
+    background-color: #013364; /* Bootstrapのライトグレー色 */
+    text-align: center;
+    padding: 1rem;
+  }
+  
