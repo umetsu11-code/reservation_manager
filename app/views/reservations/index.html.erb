@@ -1,0 +1,15 @@
+<h1>予約一覧</h1>
+
+<ul>
+  <% @reservations.each do |reservation| %>
+    <li>
+      <img src="<%= reservation.room.image_url %>" alt="<%= reservation.room.name %>" width="100">
+      <h2><%= reservation.room.name %></h2>
+      <p><%= reservation.room.description %></p>
+      <p>チェックイン日: <%= reservation.check_in_date %></p>
+      <p>チェックアウト日: <%= reservation.check_out_date %></p>
+      <p>合計料金: <%= reservation.total_price %>円</p>
+      <p>予約日時: <%= reservation.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    </li>
+  <% end %>
+</ul>

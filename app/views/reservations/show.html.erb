@@ -1,0 +1,9 @@
+<h1>予約確認</h1>
+
+<p>チェックイン日: <%= @reservation.check_in_date %></p>
+<p>チェックアウト日: <%= @reservation.check_out_date %></p>
+<p>宿泊日数: <%= @reservation.total_days %>日</p>
+<p>人数: <%= @reservation.number_of_guests %>人</p>
+<p>合計料金: <%= @reservation.total_price %>円</p>
+
+<%= link_to "戻る", reservations_path, class: "btn btn-secondary" %>

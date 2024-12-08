@@ -1,0 +1,6 @@
+<h1><%= @room.name %></h1>
+<img src="<%= @room.image_url %>" alt="<%= @room.name %>" width="300">
+<p><%= @room.description %></p>
+<p>料金: <%= @room.price %>円/日</p>
+<p>住所: <%= @room.address %></p>
+<p><%= link_to "戻る", rooms_path %></p>

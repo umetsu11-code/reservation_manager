@@ -1,0 +1,28 @@
+<h1>施設一覧</h1>
+<p>合計件数: <%= @total_rooms %></p>
+
+<%= search_form_for @q, url: rooms_path, method: :get do |f| %>
+  <div>
+    <%= f.label :address_cont, "エリア検索 (東京, 大阪, 京都, 札幌)" %>
+    <%= f.text_field :address_cont %>
+  </div>
+  <div>
+    <%= f.label :name_or_description_cont, "フリーワード検索" %>
+    <%= f.text_field :name_or_description_cont %>
+  </div>
+  <%= f.submit "検索" %>
+<% end %>
+
+<ul>
+  <% @rooms.each do |room| %>
+    <li>
+      <img src="<%= room.image_url %>" alt="<%= room.name %>" width="100">
+      <%= link_to room.name, room_path(room) %>
+      <p><%= room.description %></p>
+      <p>料金: <%= room.price %>円/日</p>
+      <p>住所: <%= room.address %></p>
+      <p>作成日: <%= room.created_at.strftime("%Y-%m-%d") %></p>
+    </li>
+
+  <% end %>
+</ul>
