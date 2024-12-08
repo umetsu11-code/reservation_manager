@@ -1,10 +1,16 @@
 class RoomsController < ApplicationController
     before_action :set_room, only: [:show]
   
-    # 施設一覧
+    # 施設一覧 Ransackでの検索処理
     def index
       @q = Room.ransack(params[:q])
       @rooms = @q.result(distinct: true)
+      
+    # エリア検索処理
+    if params[:area].present?
+      @rooms = @rooms.where(address: params[:area])
+    end
+
       @total_rooms = @rooms.count
     end
   
