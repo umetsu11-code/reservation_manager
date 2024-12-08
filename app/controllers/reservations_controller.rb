@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
     before_action :set_reservation, only: [:show]
     before_action :set_room, only: [:new, :create]
+    before_action :authenticate_user!
     
     # 予約一覧
     def index

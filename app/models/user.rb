@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 300 }
   
+  has_many :reservations, dependent: :destroy
+
   end
