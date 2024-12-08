@@ -1,16 +1,14 @@
-<h1>施設一覧</h1>
-<p>合計件数: <%= @total_rooms %></p>
-
 <%= search_form_for @q, url: rooms_path, method: :get do |f| %>
   <div>
-    <%= f.label :address_cont, "エリア検索 (東京, 大阪, 京都, 札幌)" %>
+    <%= f.label :address_cont, "エリア名を入力" %>
     <%= f.text_field :address_cont %>
   </div>
   <div>
-    <%= f.label :name_or_description_cont, "フリーワード検索" %>
+    <%= f.label :name_or_description_cont, "キーワード名を入力" %>
     <%= f.text_field :name_or_description_cont %>
   </div>
   <%= f.submit "検索" %>
+<p><%= @total_rooms %>件が見つかりました。</p>
 <% end %>
 
 <ul>

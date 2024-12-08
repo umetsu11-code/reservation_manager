@@ -8,9 +8,15 @@ class Room < ApplicationRecord
     scope :search_by_keyword, ->(keyword) {
       where("name LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
     }
-    #Ransakで住所のみを検索対象とするように設定
-    def self.ransackable_attributes(auth_object = nil)
-      ["address"]
-    end
+    #Ransakで
+  # Ransackで検索可能な属性 のちに住所のみを検索対象とするように設定しなおし
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "name", "description", "price", "created_at", "updated_at"]
+  end
+
+  # Ransackで検索可能な関連付け
+  def self.ransackable_associations(auth_object = nil)
+    ["reservations", "user"] # 検索対象とする関連名を列挙
+  end
   end
   

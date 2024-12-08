@@ -2,10 +2,14 @@
 <p>Potepan Shareで今まで見たこのない旅をしよう</p>
 
 <!-- 検索フォーム -->
- <div>
-  <input type="text" id="search-query" placeholder="エリア名を入力" class="form-control" />
-  <button id="search-button" class="btn btn-primary mt-2">検索</button>
- </div>
+<div>
+  <%= search_form_for @q, url: rooms_path, method: :get do |f| %>
+    <div>
+      <%= f.text_field :address_cont, placeholder: "エリア名を入力", class: "form-control" %>
+    </div>
+    <%= f.submit "検索", class: "btn btn-primary mt-2" %>
+  <% end %>
+</div>
   <!-- 結果表示エリア 検索結果を表示させる際に画面遷移を伴うように のち修正-->
   <div>
   <h1>おすすめのエリア</h1>
