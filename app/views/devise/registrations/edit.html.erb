@@ -3,6 +3,16 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <!-- アイコン画像 -->
+  <div>
+    <%= f.label :icon, "アイコン画像" %>
+    <%= f.file_field :icon, accept: "image/*" %>
+  </div>
+
+  <div>
+    <%= f.submit "更新", class: "btn btn-primary" %>
+  </div>
+
   <!-- メールアドレス -->
   <div class="field">
     <%= f.label :email %><br />
@@ -23,13 +33,13 @@
 
   <!-- 新しいパスワード -->
   <div class="field">
-    <%= f.label :password, "新しいパスワード（入力した場合は更新されます）" %>
+    <%= f.label :password, "変更後パスワード※変更する場合のみ" %>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <!-- 新しいパスワードの確認 -->
   <div class="field">
-    <%= f.label :password_confirmation, "新しいパスワードの確認" %>
+    <%= f.label :password_confirmation, "確認用バスワード※変更する場合のみ" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 

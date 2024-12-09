@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 300 }
   
   has_many :reservations, dependent: :destroy
-
+  has_one_attached :icon # Active Storageを使う場合の追記
   end

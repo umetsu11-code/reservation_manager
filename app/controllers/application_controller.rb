@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    protected
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
 
   # ログイン後のリダイレクト先をトップページ（root_path）に設定
   def after_sign_in_path_for(resource)
@@ -8,6 +9,13 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path #ログイン画面に遷移
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:icon])
+
   end
 
 end

@@ -33,4 +33,11 @@
     padding: 1rem;
   }
   
+  .profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* 円形にする */
+    object-fit: cover; /* 画像の比率を保ちながら中央に表示 */
+  }
+  
   

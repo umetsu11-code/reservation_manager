@@ -1,4 +1,3 @@
-<h1><%= @room.name %></h1>
 <img src="<%= @room.image_url %>" alt="<%= @room.name %>" width="300">
 <p>料金: <%= @room.price %>円/日</p>
 <p>住所: <%= @room.address %></p>
@@ -6,15 +5,15 @@
 <%= form_with model: [@room, @room.reservations.build], local: true do |f| %>
   <div>
     <%= f.label :check_in_date, "チェックイン" %>
-    <%= f.date_field :check_in_date, class: "form-control" %>
+    <%= f.date_field :check_in_date, class: "form-control" , required: true %>
   </div>
   <div>
     <%= f.label :check_out_date, "チェックアウト" %>
-    <%= f.date_field :check_out_date, class: "form-control" %>
+    <%= f.date_field :check_out_date, class: "form-control" , required: true %>
   </div>
   <div>
-    <%= f.label :guest_count, "人数" %>
-    <%= f.number_field :guest_count, value: 1, min: 1, class: "form-control" %>
+    <%= f.label :number_of_guests, "人数" %>
+    <%= f.number_field :number_of_guests, value: 1, min: 1, class: "form-control" , required: true %>
   </div>
   <div>
     <%= f.submit "予約する", class: "btn btn-primary mt-2" %>

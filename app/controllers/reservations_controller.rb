@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
     before_action :set_reservation, only: [:show]
     before_action :set_room, only: [:new, :create]
     before_action :authenticate_user!
-    
+
     # 予約一覧
     def index
       @reservations = current_user.reservations.includes(:room)
@@ -20,20 +20,26 @@ class ReservationsController < ApplicationController
   
     # 作成処理
     def create
+      @room = Room.find(params[:room_id])
       @reservation = current_user.reservations.new(reservation_params)
-      @reservation.room = Room.find(params[:room_id])
+      @reservation.room = @room
   
       if @reservation.save
         redirect_to @reservation, notice: "予約が確定しました。"
       else
+        flash.now[:alert] = "予約に失敗しました。入力内容をご確認ください。"
         render :new
       end
     end
   
     private
-  
+
+    def set_room
+      @room = Room.find(params[:room_id])
+    end
+
     def set_reservation
-      @reservation = Reservation.find(params[:id])
+     @reservation = Reservation.find(params[:id])
     end
   
     def reservation_params

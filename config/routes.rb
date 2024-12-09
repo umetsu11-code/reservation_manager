@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :rooms do #Reservationモデルの修正を記述
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:new, :create, :index]
   end
   resources :reservations, only: [:index, :show]
 
