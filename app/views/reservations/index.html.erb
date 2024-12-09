@@ -11,6 +11,7 @@
       <p>チェックアウト: <%= reservation.check_out_date %></p>
       <p>予約確定日時: <%= reservation.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
     </li>
+    <%= button_to "予約を削除", reservation_path(reservation), method: :delete, data: { confirm: "本当にこの予約を削除しますか？" }, class: "btn btn-danger" %>
   <% end %>
   
 </ul>

@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-    before_action :set_reservation, only: [:show]
     before_action :set_room, only: [:new, :create]
+    before_action :set_reservation, only: [:show, :destroy]
     before_action :authenticate_user!
 
     # 予約一覧
@@ -31,6 +31,12 @@ class ReservationsController < ApplicationController
         render :new
       end
     end
+
+      # 予約削除
+      def destroy
+        @reservation.destroy
+        redirect_to reservations_path, notice: "予約を削除しました。"
+      end
   
     private
 
@@ -39,7 +45,7 @@ class ReservationsController < ApplicationController
     end
 
     def set_reservation
-     @reservation = Reservation.find(params[:id])
+      @reservation = current_user.reservations.find(params[:id])
     end
   
     def reservation_params

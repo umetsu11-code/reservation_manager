@@ -8,10 +8,16 @@ Rails.application.routes.draw do
 }
   resources :users
 
+  resources :rooms do
+    collection do
+      get :my_rooms # 登録済み施設一覧のルート
+    end
+  end
+
   resources :rooms do #Reservationモデルの修正を記述
     resources :reservations, only: [:new, :create, :index]
   end
-  resources :reservations, only: [:index, :show]
+  resources :reservations, only: [:index, :show, :destroy]
 
   resources :rooms, only: [:index, :show, :new, :create]
 end

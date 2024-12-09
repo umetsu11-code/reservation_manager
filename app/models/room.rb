@@ -19,5 +19,7 @@ class Room < ApplicationRecord
   end
   # 施設詳細に予約機能を付与するための関連付け
   has_many :reservations, dependent: :destroy
+
+  belongs_to :user
   end
   

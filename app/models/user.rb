@@ -10,4 +10,5 @@ class User < ApplicationRecord
   
   has_many :reservations, dependent: :destroy
   has_one_attached :icon # Active Storageを使う場合の追記
-  end
+  has_many :rooms, dependent: :destroy  
+end

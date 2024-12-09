@@ -1,0 +1,15 @@
+<h2>登録済み一覧</h2>
+
+<% @rooms.each do |room| %>
+  <h3><%= link_to room.name, room_path(room) %></h3>
+  <p><%= room.description %></p>
+  <li>
+  <p>画像<img src="<%= room.image_url %>" alt="<%= room.name %>" width="100"></p>
+  <p>施設名<%= room.name %></p>
+  <p>紹介文<%= room.description %></p>
+  <p>料金: <%= room.price %>円/日</p>
+  </li>
+
+  <!-- 削除ボタンを表示 -->
+  <%= button_to "施設を削除", room_path(room), method: :delete, data: { confirm: "本当にこの施設を削除しますか？" }, class: "btn btn-danger" %>
+<% end %>
