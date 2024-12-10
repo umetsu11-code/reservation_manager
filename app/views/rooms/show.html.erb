@@ -19,4 +19,4 @@
     <%= f.submit "予約する", class: "btn btn-primary mt-2" %>
   </div>
 <% end %>
-<p><%= link_to "戻る", rooms_path %></p>
+<p><%= link_to "戻る", request.referer || rooms_path%></p>

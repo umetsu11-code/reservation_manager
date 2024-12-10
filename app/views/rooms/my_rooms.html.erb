@@ -4,6 +4,13 @@
   <h3><%= link_to room.name, room_path(room) %></h3>
   <p><%= room.description %></p>
   <li>
+  <!-- デフォルト画像対応 -->
+  <div>
+    <% if room.image_url.present? %>
+      <img src="<%= room.image_url %>" alt="<%= room.name %>" width="300">
+    <% else %>
+      <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d', alt: room.name, width: 300 %>
+    <% end %>
   <p>画像<img src="<%= room.image_url %>" alt="<%= room.name %>" width="100"></p>
   <p>施設名<%= room.name %></p>
   <p>紹介文<%= room.description %></p>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 	# Deviseのモジュールやその他のロジック
+    # パスワードを変更する場合のみバリデーションを実行
+    validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
   # ユーザー情報のバリデーションを追加
   validates :name, presence: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 300 }

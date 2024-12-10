@@ -16,6 +16,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    # 必要な処理を記述する
+    @users = User.all
+  end
+  def show
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
@@ -26,8 +34,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def index
-    # 必要な処理を記述する
-  end
+
 end
 

@@ -1,4 +1,5 @@
 class Room < ApplicationRecord
+  has_one_attached :image
     # バリデーション
     validates :name, :description, :price, :address, presence: true
     validates :price, numericality: { greater_than_or_equal_to: 1 }
@@ -21,5 +22,15 @@ class Room < ApplicationRecord
   has_many :reservations, dependent: :destroy
 
   belongs_to :user
+
+    # デフォルト画像の処理
+    def image_with_default
+      if image.attached?
+        image
+      else
+        'default-room-image.jpg' # public/images 内にデフォルト画像を保存
+      end
+    end
+
   end
   
