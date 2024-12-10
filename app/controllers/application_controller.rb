@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path #ログイン画面に遷移
+    root_path #ログイン画面に遷移
   end
 
   def configure_permitted_parameters
