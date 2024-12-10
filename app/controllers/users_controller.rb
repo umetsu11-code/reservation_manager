@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!  # ログインしていることを確認
-  before_action :set_user, only: [:edit_account, :edit_profile]
+  before_action :set_user, only: [:edit_account, :edit_profile, :update_profile]
 
   # プロフィール編集画面
   def edit_profile
-    # set_user によって @user が設定されるため、この行は不要
   end
 
   # プロフィール更新処理

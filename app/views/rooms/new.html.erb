@@ -1,6 +1,13 @@
-<h1>施設を登録する</h1>
-
 <%= form_with model: @room, local: true do |f| %>
+<% if @room.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <div>
     <%= f.label :name, "施設名" %>
     <%= f.text_field :name %>
@@ -18,8 +25,8 @@
     <%= f.text_field :address %>
   </div>
   <div>
-    <%= f.label :image_url, "画像URL" %>
-    <%= f.text_field :image_url %>
+    <%= f.label :image_url, "施設画像" %>
+    <%= f.file_field :image %>
   </div>
   <%= f.submit "登録" %>
 <% end %>
