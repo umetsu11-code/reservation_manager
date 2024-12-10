@@ -2,6 +2,29 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
+  before_action :authenticate_user!
+
+  # プロフィール編集ページ
+  def edit_profile
+    @user = current_user
+  end
+
+  # プロフィール更新処理
+  def update_profile
+    @user = current_user
+    if @user.update(profile_params)
+      redirect_to root_path, notice: 'プロフィールが更新されました。'
+    else
+      flash.now[:alert] = '更新に失敗しました。入力内容をご確認ください。'
+      render :edit_profile
+    end
+  end
+
+  private
+
+  def profile_params
+    params.require(:user).permit(:name, :introduction, :icon)
+  end
 
   protected
  # ストロングパラメータを拡張

@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'home/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "home#index" # トップページをhomeコントローラのindexアクションに設定
-  devise_for :users, controllers: {
-  registrations: 'users/registrations'
-}
-  resources :users
+  # トップページ
+  root "home#index"
 
+  # Deviseによるユーザー認証
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  # Roomsリソース
   resources :rooms do
     collection do
       get :my_rooms # 登録済み施設一覧のルート
     end
-  end
-
-  resources :rooms do #Reservationモデルの修正を記述
     resources :reservations, only: [:new, :create, :index]
   end
+
+  # Reservationsリソース
   resources :reservations, only: [:index, :show, :destroy]
 
-  resources :rooms, only: [:index, :show, :new, :create]
+  # プロフィール編集ページ用のルート
+  resources :users, only: [] do
+    member do
+      get :edit_profile  # プロフィール編集ページ
+      patch :update_profile # プロフィール更新処理
+    end
+  end
 end
