@@ -6,4 +6,8 @@
 <p>人数: <%= @reservation.number_of_guests %>人</p>
 <p>合計料金: <%= @reservation.total_price %>円</p>
 
+<% if !@reservation.confirmed? %>
+  <%= button_to "予約を確定", confirm_reservation_path(@reservation), method: :patch, class: "btn btn-primary" %>
+<% end %>
+
 <%= link_to "戻る", reservations_path, class: "btn btn-secondary" %>

@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     end
     resources :reservations, only: [:new, :create, :index]
   end
+  #予約確定画面
+  resources :reservations, only: [:index, :show, :destroy] do
+    member do
+      patch :confirm  # 予約確定のルート
+    end
+  end
 
   # Reservationsリソース
   resources :reservations, only: [:index, :show, :destroy]

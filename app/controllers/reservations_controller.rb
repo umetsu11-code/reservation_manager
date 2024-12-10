@@ -37,7 +37,15 @@ class ReservationsController < ApplicationController
         @reservation.destroy
         redirect_to reservations_path, notice: "予約を削除しました。"
       end
+
+      def confirm
+        if @reservation.update(confirmed: true)
+          redirect_to @reservation, notice: "予約が確定しました。"
+        end
+      end
   
+
+
     private
 
     def set_room

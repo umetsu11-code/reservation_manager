@@ -3,9 +3,16 @@
 <ul>
   <% @reservations.each do |reservation| %>
     <li>
-      <p>画像<img src="<%= reservation.room.image_url %>" alt="<%= reservation.room.name %>" width="100"></p>
-      <p>施設名<%= reservation.room.name %></p>
-      <p>紹介文<%= reservation.room.description %></p>
+    <!-- デフォルト画像対応 -->
+    <div>
+      <% if reservation.room.image_url.present? %>
+        <img src="<%= reservation.room.image_url %>" alt="<%= reservation.room.name %>" width="300">
+      <% else %>
+        <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d', alt: reservation.room.name, width: 300 %>
+      <% end %>
+    </div>
+      <p>施設名:<%= reservation.room.name %></p>
+      <p>紹介文:<%= reservation.room.description %></p>
       <p>合計料金: <%= reservation.total_price %>円</p>
       <p>チェックイン: <%= reservation.check_in_date %></p>
       <p>チェックアウト: <%= reservation.check_out_date %></p>

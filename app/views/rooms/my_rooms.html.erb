@@ -11,7 +11,6 @@
     <% else %>
       <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d', alt: room.name, width: 300 %>
     <% end %>
-  <p>画像<img src="<%= room.image_url %>" alt="<%= room.name %>" width="100"></p>
   <p>施設名<%= room.name %></p>
   <p>紹介文<%= room.description %></p>
   <p>料金: <%= room.price %>円/日</p>

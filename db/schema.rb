@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_09_144909) do
+ActiveRecord::Schema.define(version: 2024_12_10_162153) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,18 +40,8 @@ ActiveRecord::Schema.define(version: 2024_12_09_144909) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id", null: false
-    t.date "start_date"
-    t.date "end_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.date "check_in_date", null: false
-    t.date "check_out_date", null: false
-    t.integer "number_of_guests", null: false
-    t.index ["room_id"], name: "index_reservations_on_room_id"
-  end
+# Could not dump table "reservations" because of following StandardError
+#   Unknown type 'false' for column 'default'
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
