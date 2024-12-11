@@ -5,6 +5,7 @@
     background-image: asset-url("test2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50%;
     height: 460px;
     margin-bottom: 80px;
     padding-top: 60px;
@@ -73,3 +74,27 @@ section {
     grid-gap: 32px;
     gap: 32px;
 }
+.RecommendArea {
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 26px;
+    display: flex
+;
+    flex-direction: column;
+    height: 455px;
+    justify-content: flex-end;
+    padding: 40px 24px;
+    width: calc(25% - 24px);
+}
+
+.RecommendAreaSection__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+
+  }
+  
+  
+  .RecommendAreas .btn:hover {
+    background-color: #0056b3; /* ボタンのホバー色 */
+    color: #fff; /* テキスト色 */
+  }
