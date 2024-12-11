@@ -8,6 +8,8 @@ ja:
         description: "施設詳細"
         price: "宿泊料金"
         address: "住所"
+      user:
+        current_password: "現在のパスワード"
     errors:
       messages:
         blank: "は必須入力です"

@@ -17,47 +17,39 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="http://localhost:3000/">
-    <img src="/assets/logo.png" alt="Logo" class="d-inline-block align-text-top" style="height: 40px; width: auto;">
+      <img src="/assets/logo.png" alt="Logo" class="d-inline-block align-text-top" style="height: 40px; width: auto;">
     </a>
-    <div class="d-flex ms-auto" id="navbarNav">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
-        <!--ユーザー情報をドロップダウン化する処理-->
-        <div class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-         <!-- プロフィール画像を表示 -->
-           <% if user_signed_in? %>
-             <% if current_user.icon.attached? %>
-               <%= image_tag current_user.icon, alt: current_user.name, class: "profile-image me-2"%>
-             <% else %>
-               <%= image_tag "default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", alt: "デフォルトプロフィール画像", class: "profile-image me-2" %>
-             <% end %>
-           <% end %>
-         <%= current_user.name || "ユーザー" %>
-         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li>
-           <%= link_to "施設の新規登録", new_room_path, class: "dropdown-item" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- プロフィール画像を表示 -->
+              <% if current_user.icon.attached? %>
+                <%= image_tag current_user.icon, alt: current_user.name, class: "profile-image me-2"%>
+              <% else %>
+                <%= image_tag "default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", alt: "デフォルトプロフィール画像", class: "profile-image me-2" %>
+              <% end %>
+              <%= current_user.name || "ユーザー" %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><%= link_to "施設の新規登録", new_room_path, class: "dropdown-item" %></li>
+              <li><%= link_to "予約済み一覧", reservations_path, class: "dropdown-item" %></li>
+              <li><%= link_to "登録済み一覧", my_rooms_rooms_path, class: "dropdown-item" %></li>
+              <li><%= link_to "アカウント設定", edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
           </li>
-          <li>
-           <%= link_to "予約済み一覧", reservations_path, class: "dropdown-item" %>
-          </li>
-          <li>
-           <%= link_to "登録済み一覧", my_rooms_rooms_path, class: "dropdown-item" %>
-          </li>
-          <li>
-           <%= link_to "アカウント設定", edit_user_registration_path, class: "dropdown-item" %>
-          </li>
-          <li>
-           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </li>
-          </ul>
-        </div>
         <% else %>
-          <li class="dropdown-item">
+          <li class="nav-item">
             <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
           </li>
-          <li class="dropdown-item">
+          <li class="nav-item">
             <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
@@ -65,6 +57,7 @@
     </div>
   </div>
 </nav>
+
   <!-- メインコンテンツ -->
   <main class="flex-grow-1">
   <%= yield %>
